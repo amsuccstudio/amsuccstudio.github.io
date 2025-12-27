@@ -1,330 +1,287 @@
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AMSUCC Studio - Crafting modern, professional websites with precision.">
-  <title>AMSUCC Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* --- Reset & Base Styles --- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
-    body {
-      background-color: #ffffff;
-      color: #0d1b2a;
-      line-height: 1.6;
-    }
-    a {
-      text-decoration: none;
-      color: #1d4ed8;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
-    h1, h2, h3 {
-      color: #0d1b2a;
-    }
-    /* --- Header --- */
-    header {
-      background-color: #ffffff;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #1d4ed8;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header h1 {
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-    nav ul li a {
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #2563eb;
-    }
-    /* --- Hero Section --- */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 80vh;
-      text-align: center;
-      background-color: #f0f4ff;
-      padding: 0 20px;
-    }
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-    .hero .cta-btn {
-      padding: 12px 25px;
-      background-color: #1d4ed8;
-      color: #ffffff;
-      font-weight: 600;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .hero .cta-btn:hover {
-      background-color: #2563eb;
-    }
-    /* --- Portfolio Section --- */
-    .portfolio {
-      padding: 60px 40px;
-      background-color: #ffffff;
-    }
-    .portfolio h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 50px;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-    .project-card {
-      border: 2px solid #1d4ed8;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-    .project-card:hover {
-      transform: scale(1.05);
-    }
-    .project-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .project-card .content {
-      padding: 15px;
-    }
-    .project-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-    .project-card p {
-      font-size: 0.95rem;
-      color: #1e293b;
-    }
-    /* --- Services Section --- */
-    .services {
-      padding: 60px 40px;
-      background-color: #f0f4ff;
-    }
-    .services h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 50px;
-    }
-    .service-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-    .service-card {
-      background-color: #ffffff;
-      border: 2px solid #1d4ed8;
-      border-radius: 8px;
-      padding: 20px;
-      transition: transform 0.3s;
-    }
-    .service-card:hover {
-      transform: scale(1.03);
-    }
-    .service-card h3 {
-      margin-bottom: 15px;
-    }
-    .service-card p {
-      font-size: 0.95rem;
-      color: #1e293b;
-    }
-    /* --- Contact Section --- */
-    .contact {
-      padding: 60px 40px;
-      background-color: #ffffff;
-    }
-    .contact h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 50px;
-    }
-    .contact-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-    }
-    .contact-info, .contact-form {
-      flex: 1 1 300px;
-    }
-    .contact-info p {
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-    .contact-form form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .contact-form input, .contact-form textarea {
-      padding: 10px;
-      border: 2px solid #1d4ed8;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    .contact-form button {
-      padding: 12px;
-      background-color: #1d4ed8;
-      color: #ffffff;
-      font-weight: 600;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .contact-form button:hover {
-      background-color: #2563eb;
-    }
-    /* --- Footer --- */
-    footer {
-      background-color: #0d1b2a;
-      color: #ffffff;
-      text-align: center;
-      padding: 20px 0;
-    }
-    footer a {
-      color: #1d4ed8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMSUCC Studio | Professional Web Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/code.png">
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <h1>AMSUCC Studio</h1>
-    <nav>
-      <ul>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h2>Crafting modern, professional websites with precision</h2>
-    <p>AMSUCC Studio delivers clean, modern, and professional web solutions to help your brand shine online.</p>
-    <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section class="portfolio" id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="projects">
-      <div class="project-card">
-        <img src="https://via.placeholder.com/400x180.png?text=Project+1" alt="Project 1">
-        <div class="content">
-          <h3>Project One</h3>
-          <p>A modern, responsive website built to showcase client products with professional design.</p>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#home">AMSUCC <span>Studio</span></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <button id="theme-switcher" aria-label="Toggle dark/light mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <button class="menu-toggle" aria-label="Open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="https://via.placeholder.com/400x180.png?text=Project+2" alt="Project 2">
-        <div class="content">
-          <h3>Project Two</h3>
-          <p>Clean and functional landing page designed for small businesses to convert visitors.</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-up">Crafting modern, professional websites with <span class="highlight">precision</span>.</h1>
+                <p class="hero-subtitle animate-fade-up-delay">Hi, I'm <strong>Abdulkareem Fawaz</strong>, founder of AMSUCC Studio. I build digital experiences that help brands stand out — clean, fast, and tailored to your vision.</p>
+                <div class="hero-buttons animate-fade-up-delay-2">
+                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Start a Project</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web design workspace">
+            </div>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="https://via.placeholder.com/400x180.png?text=Project+3" alt="Project 3">
-        <div class="content">
-          <h3>Project Three</h3>
-          <p>Portfolio-style website emphasizing branding and user experience for clients.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm <strong>Abdulkareem Fawaz</strong>, a passionate web developer and designer based worldwide. I founded <strong>AMSUCC Studio</strong> to help businesses and individuals establish a powerful online presence through clean, modern, and responsive websites.</p>
+                    <p>With an eye for detail and a commitment to performance, I blend technical skill with creative design to deliver websites that not only look great but also drive results.</p>
+                    <p>When I'm not coding, I run a custom tailoring business — a craft that sharpens my precision and attention to detail, qualities I bring into every web project.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Abdulkareem Fawaz">
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="project-card">
-        <img src="https://via.placeholder.com/400x180.png?text=Project+4" alt="Project 4">
-        <div class="content">
-          <h3>Project Four</h3>
-          <p>Professional website layout with modern visuals and easy-to-navigate sections.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What I Offer</h2>
+            <p class="section-subtitle">Comprehensive web solutions tailored to your needs.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website Creation</h3>
+                    <p>Custom, responsive websites designed to meet your brand's unique requirements — from concept to deployment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Portfolio & Sample Sites</h3>
+                    <p>Showcasing client projects with professional layouts and clean design that highlight your work effectively.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Website Maintenance</h3>
+                    <p>Updates, fixes, and performance optimization to keep your site running smoothly and securely.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3>Optional Add-ons</h3>
+                    <p>SEO setup, analytics integration, and no-code enhancements to boost your site's visibility and functionality.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services Section -->
-  <section class="services" id="services">
-    <h2>Services</h2>
-    <div class="service-cards">
-      <div class="service-card">
-        <h3>Website Creation</h3>
-        <p>Custom, responsive websites designed to meet your brand's unique requirements.</p>
-      </div>
-      <div class="service-card">
-        <h3>Portfolio & Sample Sites</h3>
-        <p>Showcasing client projects with professional layouts and clean design.</p>
-      </div>
-      <div class="service-card">
-        <h3>Website Maintenance</h3>
-        <p>Updates, fixes, and performance optimization to keep your site running smoothly.</p>
-      </div>
-      <div class="service-card">
-        <h3>Optional Add-ons</h3>
-        <p>SEO setup, analytics integration, and no-code enhancements to boost your site.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">A selection of recent work I've delivered.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="E-commerce Website">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Modern E‑commerce Store</h3>
+                        <p>A fully responsive online store with product filtering, cart, and secure checkout.</p>
+                        <div class="portfolio-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="Business Website">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Corporate Business Website</h3>
+                        <p>A sleek corporate site with service pages, team profiles, and contact integration.</p>
+                        <div class="portfolio-tags">
+                            <span>React</span>
+                            <span>Tailwind CSS</span>
+                            <span>API</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70" alt="Tailoring Website">
+                        <div class="portfolio-overlay">
+                            <a href="#" class="portfolio-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>TailorFit – Tailoring Business</h3>
+                        <p>A custom website for a tailoring brand showcasing services, gallery, and booking system.</p>
+                        <div class="portfolio-tags">
+                            <span>WordPress</span>
+                            <span>CSS3</span>
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <p>Email: <a href="mailto:hello@amsucc.studio">hello@amsucc.studio</a></p>
-        <p>WhatsApp: <a href="https://wa.me/08079444199">08079444199</a></p>
-        <p>Instagram: <a href="https://instagram.com/amsuccstudio" target="_blank">@AMSUCCStudio</a></p>
-        <p>Facebook: <a href="https://facebook.com/amsuccstudio" target="_blank">@AMSUCCStudio</a></p>
-      </div>
-      <div class="contact-form">
-        <form action="#" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Clients Say</h2>
+            <p class="section-subtitle">Kind words from people I've worked with.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>“AMSUCC Studio delivered a website that exceeded our expectations. Professional, timely, and great attention to detail.”</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Alex Morgan</h4>
+                        <p>CEO, TechVision Inc.</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>“Working with Abdulkareem was a breeze. He understood our brand perfectly and built a site that truly represents us.”</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Sarah Chen</h4>
+                        <p>Founder, Bloom Boutique</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>“Fast, responsive, and highly skilled. Our new portfolio site has attracted more clients than ever before!”</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>James Okafor</h4>
+                        <p>Photographer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 AMSUCC Studio. All rights reserved. | Designed for modern web solutions</p>
-  </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Build Something Awesome</h2>
+            <p class="section-subtitle">Have a project in mind? Reach out — I'd love to hear about it.</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>fawazabdulkareem111@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Available Worldwide</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-share-alt"></i>
+                        <div>
+                            <h3>Social</h3>
+                            <div class="social-links">
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#home">AMSUCC <span>Studio</span></a>
+                    <p>Crafting modern, professional websites with precision.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> AMSUCC Studio. All rights reserved.</p>
+                <p>Designed and built with <i class="fas fa-heart"></i> by Abdulkareem Fawaz</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
 </body>
 </html>
