@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AMSUCC Studio - Crafting modern, professional websites with precision.">
+  <title>AMSUCC Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Reset & Base Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+    body {
+      background-color: #ffffff;
+      color: #0d1b2a;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: #1d4ed8;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    h1, h2, h3 {
+      color: #0d1b2a;
+    }
+    /* --- Header --- */
+    header {
+      background-color: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #1d4ed8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav ul li a {
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #2563eb;
+    }
+    /* --- Hero Section --- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      text-align: center;
+      background-color: #f0f4ff;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero .cta-btn {
+      padding: 12px 25px;
+      background-color: #1d4ed8;
+      color: #ffffff;
+      font-weight: 600;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .hero .cta-btn:hover {
+      background-color: #2563eb;
+    }
+    /* --- Portfolio Section --- */
+    .portfolio {
+      padding: 60px 40px;
+      background-color: #ffffff;
+    }
+    .portfolio h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .project-card {
+      border: 2px solid #1d4ed8;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .project-card .content {
+      padding: 15px;
+    }
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      color: #1e293b;
+    }
+    /* --- Services Section --- */
+    .services {
+      padding: 60px 40px;
+      background-color: #f0f4ff;
+    }
+    .services h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .service-card {
+      background-color: #ffffff;
+      border: 2px solid #1d4ed8;
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+    .service-card:hover {
+      transform: scale(1.03);
+    }
+    .service-card h3 {
+      margin-bottom: 15px;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: #1e293b;
+    }
+    /* --- Contact Section --- */
+    .contact {
+      padding: 60px 40px;
+      background-color: #ffffff;
+    }
+    .contact h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+    .contact-info, .contact-form {
+      flex: 1 1 300px;
+    }
+    .contact-info p {
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 10px;
+      border: 2px solid #1d4ed8;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      padding: 12px;
+      background-color: #1d4ed8;
+      color: #ffffff;
+      font-weight: 600;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .contact-form button:hover {
+      background-color: #2563eb;
+    }
+    /* --- Footer --- */
+    footer {
+      background-color: #0d1b2a;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    footer a {
+      color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>AMSUCC Studio</h1>
+    <nav>
+      <ul>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Crafting modern, professional websites with precision</h2>
+    <p>AMSUCC Studio delivers clean, modern, and professional web solutions to help your brand shine online.</p>
+    <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio" id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x180.png?text=Project+1" alt="Project 1">
+        <div class="content">
+          <h3>Project One</h3>
+          <p>A modern, responsive website built to showcase client products with professional design.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x180.png?text=Project+2" alt="Project 2">
+        <div class="content">
+          <h3>Project Two</h3>
+          <p>Clean and functional landing page designed for small businesses to convert visitors.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x180.png?text=Project+3" alt="Project 3">
+        <div class="content">
+          <h3>Project Three</h3>
+          <p>Portfolio-style website emphasizing branding and user experience for clients.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x180.png?text=Project+4" alt="Project 4">
+        <div class="content">
+          <h3>Project Four</h3>
+          <p>Professional website layout with modern visuals and easy-to-navigate sections.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <h2>Services</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>Website Creation</h3>
+        <p>Custom, responsive websites designed to meet your brand's unique requirements.</p>
+      </div>
+      <div class="service-card">
+        <h3>Portfolio & Sample Sites</h3>
+        <p>Showcasing client projects with professional layouts and clean design.</p>
+      </div>
+      <div class="service-card">
+        <h3>Website Maintenance</h3>
+        <p>Updates, fixes, and performance optimization to keep your site running smoothly.</p>
+      </div>
+      <div class="service-card">
+        <h3>Optional Add-ons</h3>
+        <p>SEO setup, analytics integration, and no-code enhancements to boost your site.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <p>Email: <a href="mailto:hello@amsucc.studio">hello@amsucc.studio</a></p>
+        <p>WhatsApp: <a href="https://wa.me/08079444199">08079444199</a></p>
+        <p>Instagram: <a href="https://instagram.com/amsuccstudio" target="_blank">@AMSUCCStudio</a></p>
+        <p>Facebook: <a href="https://facebook.com/amsuccstudio" target="_blank">@AMSUCCStudio</a></p>
+      </div>
+      <div class="contact-form">
+        <form action="#" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 AMSUCC Studio. All rights reserved. | Designed for modern web solutions</p>
+  </footer>
+
+</body>
+</html>
