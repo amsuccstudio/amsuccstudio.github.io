@@ -706,3 +706,13 @@ p {
         gap: 30px;
     }
 }
+
+/* Make entire portfolio card clickable */
+.portfolio-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.portfolio-card-link:hover .portfolio-card {
+    transform: translateY(-10px);
+}
