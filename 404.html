@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | AMSUCC Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/code.png">
+</head>
+<body>
+    <!-- Header (Same as Main Site) -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">AMSUCC <span>Studio</span></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <button id="theme-switcher" aria-label="Toggle dark/light mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <button class="menu-toggle" aria-label="Open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 404 Content -->
+    <section class="error-page" style="padding: 120px 0; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 8rem; color: var(--primary-color); margin-bottom: 20px; line-height: 1;">404</h1>
+            <h2 class="section-title">Page Not Found</h2>
+            <p class="section-subtitle" style="max-width: 600px; margin: 0 auto 40px;">
+                Oops! The page you're looking for seems to have been misplaced, much like a needle in a digital haystack.
+            </p>
+            <div class="hero-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Back to Homepage
+                </a>
+                <a href="index.html#contact" class="btn btn-secondary">
+                    <i class="fas fa-paper-plane"></i> Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as Main Site) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">AMSUCC <span>Studio</span></a>
+                    <p>Crafting modern, professional websites with precision.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#portfolio">Portfolio</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> AMSUCC Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
