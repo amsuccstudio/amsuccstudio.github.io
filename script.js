@@ -1,4 +1,3 @@
-
 // DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -30,11 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ===== MOBILE MENU TOGGLE =====
+    // ===== MOBILE MENU TOGGLE & OUTSIDE CLICK =====
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const navbar = document.querySelector('.navbar');
     
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle('active');
         menuToggle.innerHTML = navLinks.classList.contains('active') 
             ? '<i class="fas fa-times"></i>' 
@@ -47,6 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.remove('active');
             menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
         });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') && 
+            !navbar.contains(e.target) && 
+            !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     });
 
     // ===== BACK TO TOP =====
@@ -67,26 +78,131 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== CURRENT YEAR IN FOOTER =====
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // ===== CONTACT FORM SUBMISSION =====
-    const contactForm = document.getElementById('contactForm');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    // ===== ENHANCED SCROLL ANIMATIONS =====
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+        const windowHeight = window.innerHeight;
+        const windowTop = window.scrollY;
+        const windowBottom = windowTop + windowHeight;
         
-        // Get form values
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const message = this.querySelector('textarea').value;
-        
-        // Simulate form submission
-        console.log('Form submitted:', { name, email, message });
-        
-        // Show success message
-        alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon at ${email}.`);
-        
-        // Reset form
-        this.reset();
-    });
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top + windowTop;
+            const elementBottom = elementTop + element.offsetHeight;
+            
+            // Check if element is in viewport (with 100px offset)
+            if (elementBottom >= windowTop + 100 && elementTop <= windowBottom - 100) {
+                element.classList.add('animated');
+            } else {
+                // REMOVE CLASS WHEN SCROLLING AWAY (bidirectional)
+                element.classList.remove('animated');
+            }
+        });
+    };
+
+    // Initial check and add scroll event listener
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
+
+    // ===== WHATSAPP CONTACT FORM =====
+    const whatsappForm = document.getElementById('whatsappContactForm');
+    if (whatsappForm) {
+        whatsappForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const project = document.getElementById('projectDetails').value;
+            
+            const message = `Hello AMSUCC Studio!%0A%0A*New Project Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A%0A*Project Details:*%0A${project}%0A%0AI'd like to discuss this further.`;
+            const phoneNumber = '2347041169276';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+
+    // ===== WHATSAPP WIDGET =====
+    const whatsappButton = document.getElementById('whatsappWidgetButton');
+    const whatsappChatBox = document.getElementById('whatsappChatBox');
+    const closeChatBox = document.getElementById('closeChatBox');
+    const sendWhatsAppBtn = document.getElementById('sendWhatsAppMessage');
+    const whatsappMessageInput = document.getElementById('whatsappMessage');
+
+    // Open/close chat box
+    if (whatsappButton && whatsappChatBox) {
+        whatsappButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            whatsappChatBox.classList.toggle('active');
+            if (whatsappChatBox.classList.contains('active')) {
+                whatsappMessageInput.focus();
+            }
+        });
+
+        closeChatBox.addEventListener('click', () => {
+            whatsappChatBox.classList.remove('active');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (whatsappChatBox.classList.contains('active') && 
+                !whatsappChatBox.contains(e.target) && 
+                !whatsappButton.contains(e.target)) {
+                whatsappChatBox.classList.remove('active');
+            }
+        });
+
+        // Send message functionality
+        sendWhatsAppBtn.addEventListener('click', () => {
+            const message = whatsappMessageInput.value.trim();
+            if (message) {
+                const phoneNumber = '2347041169276';
+                const encodedMessage = encodeURIComponent(`Hello AMSUCC Studio! I have a question: ${message}`);
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+                whatsappMessageInput.value = '';
+                whatsappChatBox.classList.remove('active');
+                
+                // Add sent message to chat
+                const chatBody = document.querySelector('.chat-body');
+                const sentMessage = document.createElement('div');
+                sentMessage.className = 'chat-message chat-message-sent';
+                sentMessage.innerHTML = `<p>${message}</p>`;
+                chatBody.appendChild(sentMessage);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            } else {
+                whatsappMessageInput.focus();
+            }
+        });
+
+        // Send on Enter (Ctrl+Enter for new line)
+        whatsappMessageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey && !e.ctrlKey) {
+                e.preventDefault();
+                sendWhatsAppBtn.click();
+            }
+        });
+    }
+
+    // ===== FAQ ACCORDION =====
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    }
 
     // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -102,28 +218,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
             }
         });
-    });
-
-    // ===== SCROLL ANIMATIONS =====
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-up');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements you want to animate on scroll
-    document.querySelectorAll('.service-card, .portfolio-card, .testimonial-card').forEach(el => {
-        observer.observe(el);
     });
 
     // ===== CONSOLE GREETING =====
